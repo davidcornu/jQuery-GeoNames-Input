@@ -6,6 +6,7 @@
  */
 
 
+//Fetch Information from GeoNames.org 
 function GetGeoNames(id, locale){
 	input = $("#" + id);
 	list = $("#" + id + "_suggestion_list");
@@ -15,22 +16,36 @@ function GetGeoNames(id, locale){
 	search_param = "name=" + input.val();
 	final_url = base_url + "&" + limit_param + "&" + locale_param + "&" + search_param;
 	if (input.val()){
+		input.addClass("loading");
 		$.getJSON(final_url, function(data){
+			input.removeClass("loading");
+			list.empty();
 			$.each(data.geonames, function(index, obj){
 				list.append("<li>" + obj.toponymName + ", " + obj.adminName1 + ", " + obj.countryName + "</li>");
 			});
+			list.slideDown('fast');
 		});
 	}
 }
 
+//Handle clicks for suggestions
+$("ul.geonames_input_suggestion_list li").live("click", function(){
+	$(this).parent().parent().find("input.geonames_input").val($(this).text());
+	$(this).parent().slideUp();
+});
 
+//jQuery Plugin + Timeout for Typing
 (function($) { 
 	$.fn.geoname = function(delay, locale){
 		var self = this;
-		$("body").append("<ul id='" + self.attr("id") + "_suggestion_list'></ul>");
+		$(this).wrap("<div class='geonames_input_holder'/>").addClass("geonames_input");
+		$(this).parent().append("<ul id='" + $(this).attr("id") + "_suggestion_list' class='geonames_input_suggestion_list'></ul>");
+		$("ul#" + $(this)	.attr("id") + "_suggestion_list")
+											.css("width", $(this).width())
+											.css("top", $(this).height());
 		$(this).keyup(function(){
 			clearTimeout(self.typing);
-			$("#" + self.attr("id") + "_suggestion_list").empty();
+			$("#" + self.attr("id") + "_suggestion_list").slideUp('fast');
 			self.typing = setTimeout(function(){ GetGeoNames(self.attr("id"), locale) }, delay);
 		});
 		return this;
