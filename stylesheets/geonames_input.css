@@ -5,10 +5,6 @@
  * Written by David Cornu.
  */
 
-input{
-	width: 200px;
-}
-
 .geonames_input_holder{}
 
 input.geonames_input{
@@ -16,7 +12,7 @@ input.geonames_input{
 }
 
 input.geonames_input.loading{
-	background: url(loading.gif) center right no-repeat;
+	background: url(../images/loading.gif) center right no-repeat;
 }
 
 ul.geonames_input_suggestion_list{

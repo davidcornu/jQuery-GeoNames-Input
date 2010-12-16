@@ -1,12 +1,20 @@
 <html>
   <head>
-    <title>jQuery GeoName Input Demo</title>
+    <title>jQuery GeoNames Input Demo</title>
+    
+    <!-- Load jQuery from Google CDN -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.geonames_input.js"></script>
-    <link rel="stylesheet" href="geonames_input.css" type="text/css">
+    
+    <!-- Load jQuery GeoNames Input Plugin -->
+    <script type="text/javascript" src="javascripts/jquery.geonames_input.js"></script>
+    
+    <!-- Load jQuery GeoNames Input Stylesheet -->
+    <link rel="stylesheet" href="stylesheets/geonames_input.css" type="text/css">
   </head>
   <body>
-    <input type="text" id="geoname"></input>
+    <input type="text" id="geoname" style="width: 250px"></input>
+    
+    <!-- Call Plugin on Input -->
     <script type="text/javascript">
       $("input#geoname").geoname(1000, "en");
     </script>
