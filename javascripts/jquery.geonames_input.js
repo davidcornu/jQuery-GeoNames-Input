@@ -10,11 +10,12 @@
 function GetGeoNames(id, locale){
 	input = $("#" + id);
 	list = $("#" + id + "_suggestion_list");
-	base_url = "http://ws.geonames.org/searchJSON?"
-	limit_param = "maxRows=5"
+	base_url = "http://ws.geonames.org/searchJSON?";
+	limit_param = "maxRows=5";
 	locale_param = "lang=" + locale;
+	type_param = "featureClass=A"
 	search_param = "name=" + input.val();
-	final_url = base_url + "&" + limit_param + "&" + locale_param + "&" + search_param;
+	final_url = base_url + "&" + limit_param + "&" + locale_param + "&" + type_param + "&" + search_param;
 	if (input.val()){
 		input.addClass("loading");
 		$.getJSON(final_url, function(data){
