@@ -14,7 +14,7 @@ function GetGeoNames(id, locale){
 	limit_param = "maxRows=5";
 	locale_param = "lang=" + locale;
 	type_param = "featureClass=P"
-	search_param = "name=" + input.val();
+	search_param = "name=" + encodeURIComponent(input.val());
 	final_url = base_url + "&" + limit_param + "&" + locale_param + "&" + type_param + "&" + search_param;
 	if (input.val()){
 		input.addClass("loading");
