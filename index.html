@@ -3,21 +3,71 @@
     <title>jQuery GeoNames Input Demo</title>
     
     <!-- Load jQuery from Google CDN -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="stylesheets/jquery-ui-1.8.7.custom.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="javascripts/jquery-ui-1.8.7.custom.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <!-- Maxmind GeoIP Service -->
+    <script language="JavaScript" src="http://j.maxmind.com/app/geoip.js"></script>
     
     <!-- Load jQuery GeoNames Input Plugin -->
     <script type="text/javascript" src="javascripts/jquery.geonames_input.js"></script>
     
-    <!-- Load jQuery GeoNames Input Stylesheet -->
-    <link rel="stylesheet" href="stylesheets/geonames_input.css" type="text/css">
+    <!-- Quick & Dirty Styling -->
+    <style>
+      body{
+        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      }
+      
+      label{
+        display: block;
+        margin-bottom: 5px;
+      }
+      
+      p{
+        padding: 0px;
+        margin: 5px 0;
+        font-size: 10px;
+      }
+    
+      input.ui-geoname-input{
+        background: white;
+        border: #aeaeae solid 1px;
+        font-size: 16px;
+        width: 400px;
+        padding: 5px;
+      }
+      
+      input.ui-geoname-input:focus{
+        border-color: #444;
+      }
+    
+      input.ui-geoname-input.ui-autocomplete-loading{
+        background: url(images/loading.gif) right center no-repeat;
+      }
+      
+      .ui-geoname-value{
+        background: #eee url(images/close.gif) 5px center no-repeat;
+        border: 1px solid #bcbcbc;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        padding: 5px 5px 5px 30px;
+        display: inline-block;  
+      }
+      
+    </style>
   </head>
   <body>
     <label>Your Location:</label>
-    <input type="text" id="geoname" style="width: 250px"></input>
+    <input type="text" id="geoname"></input>
+    <p><i>Powered by <a href="http://www.maxmind.com/">Maxmind</a> and <a href="http://www.geonames.org">Geonames.org</a>.</i></p>
     
     <!-- Call Plugin on Input -->
     <script type="text/javascript">
-      $("input#geoname").geoname(1000, "en");
+      $("input#geoname").geoname("en");
     </script>
   </body>
 </html>

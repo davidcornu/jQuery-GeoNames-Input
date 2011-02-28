@@ -5,36 +5,5 @@
  * Written by David Cornu.
  */
 
-.geonames_input_holder{}
 
-input.geonames_input{
-	float: left;
-}
 
-input.geonames_input.loading{
-	background: url(../images/loading.gif) center right no-repeat;
-}
-
-ul.geonames_input_suggestion_list{
-	clear: both;
-	float: left;
-	z-index: 1000;
-	list-style: none;
-	display: block;
-	padding: 0;
-	margin: 0;
-	background: #eeeeee;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
-
-ul.geonames_input_suggestion_list li{
-	font-size: 11px;
-	padding: 2px;
-	cursor: pointer;
-}
-
-ul.geonames_input_suggestion_list li:hover{
-	background: #dadada;
-}
