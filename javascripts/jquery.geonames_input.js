@@ -8,33 +8,7 @@
 (function($) { 
 	$.fn.geoname = function(locale){
 		if (typeof locale == "undefined") {locale = "en";}
-		$(this).addClass("ui-geoname-input").wrap("<div class='ui-geoname-holder' />");
-		$(this).parent().prepend("<div class='ui-geoname-value'></div>");
-		
-		// Initial Value
-		if($(this).val().length == 0){
-			$(this).val(geoip_city() + ", " + geoip_region_name() + ", " + geoip_country_name());
-			if($(this).val().length > 0){
-      	$(this).hide();
-        $(this).parent().find(".ui-geoname-value").html($(this).val());
-			}
-  	}
-  		
-  		// Allow editing
-  		$(this).parent().find(".ui-geoname-value").click(function(){
-      	$(this).hide()
-      	$(this).parent().find(".ui-geoname-input").show().select();
-  		});
-  		
-  		// Return on blur
-  		$(this).blur(function(){
-				if($(this).val().length > 0){
-      		$(this).val( $(this).parent().find(".ui-geoname-value").html() ).hide();
-        	$(this).parent().find(".ui-geoname-value").show();
-  			}
-			});
-		
-		// Autocompletion
+
 		$(this).autocomplete({
 			delay: 1000,
 			source: function(request, response){
@@ -56,11 +30,7 @@
 					});
 					response(results);
 				}).error(function(){ response("") });
-			},
-      select: function(event, ui){
-      	$(this).parent().find(".ui-geoname-value").html(ui.item.value).show();
-        $(this).hide();
-      }
+			}
 		});
 		
 		return this;
